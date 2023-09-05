@@ -9,7 +9,7 @@ cap = cv2.VideoCapture(0)
 finger_tips =[8, 12, 16, 20]
 thumb_tip= 4
 
-finger_fold_status = []
+
 
 while True:
     ret,img = cap.read()
@@ -27,6 +27,7 @@ while True:
 
 
              #Code goes here   
+                finger_fold_status = []
                 for tip in finger_tips:
                    x,y = int(lm_list[tip].x*w) , int(lm_list[tip].x*y)
                    cv2.circle(img, (x,y), 15 , (255,0,0), cv2.FILLED)
