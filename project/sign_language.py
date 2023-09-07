@@ -27,31 +27,26 @@ while True:
 
 
              #Code goes here   
-                finger_fold_status = []
-                for tip in finger_tips:
-                   x,y = int(lm_list[tip].x*w) , int(lm_list[tip].x*y)
-                   cv2.circle(img, (x,y), 15 , (255,0,0), cv2.FILLED)
+            finger_fold_status = []
+            for tip in finger_tips:
+                x,y = int(lm_list[tip].x*w) , int(lm_list[tip].x*y)
+                cv2.circle(img, (x,y), 15 , (255,0,0), cv2.FILLED)
 
-                   if lm_list[tip].x < lm_list[tip-3].x:
-                      cv2.circle(img,(x,y),15 ,(0,255,0),cv2.FILLED)
-                      finger_fold_status.append(True)
+                if lm_list[tip].x < lm_list[tip-3].x:
+                    cv2.circle(img,(x,y),15 ,(0,255,0),cv2.FILLED)
+                    finger_fold_status.append(True)
 
-                   else:
-                        finger_fold_status(False)
+                else:
+                    finger_fold_status(False)
 
-                   if all(finger_fold_status):
-                       
-                       if lm_list[thumb_tip].y < lm_list[thumb_tip-1].y < lm_list[thumb_tip-2].y:    
-                           
-                           print("Like")
+                if all(finger_fold_status):
+                    if lm_list[thumb_tip].y < lm_list[thumb_tip-1].y < lm_list[thumb_tip-2].y:       
+                        print("Like")
+                        cv2.putText(img,"LIKE",(20,30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),3)
 
-                           cv2.putText(img,"LIKE",(20,30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),3)
-
-                           if lm_list[thumb_tip].y > lm_list[thumb_tip-1].y > lm_list[thumb_tip-2].y:
-                                  
-                                 print("Dislike")
-
-                                 cv2.putText(img,"DISLIKE",(20,30),cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),3)
+                    if lm_list[thumb_tip].y > lm_list[thumb_tip-1].y > lm_list[thumb_tip-2].y:          
+                        print("Dislike")
+                        cv2.putText(img,"DISLIKE",(20,30),cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),3)
 
                 
                       
